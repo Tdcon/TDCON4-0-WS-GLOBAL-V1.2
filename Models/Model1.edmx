@@ -1,0 +1,1265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GLOBAL_BMWModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaName" Type="varchar" MaxLength="800" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Companias">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompaniaName" Type="varchar" MaxLength="800" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Config_correos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PORT" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="255" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="255" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="255" />
+          <Property Name="SERVER" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IPSERVIDOR" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IPCONTROLGAS1" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IPCONTROLGAS2" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IPPLC" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="REPORTESPOR" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartamentName" Type="varchar" MaxLength="250" />
+          <Property Name="Status" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Edificios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EdificioName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TextoLog" Type="varchar(max)" />
+          <Property Name="TagUsuario" Type="varchar(max)" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="App" Type="varchar(max)" />
+          <Property Name="IdApp" Type="int" />
+          <Property Name="IdBuilding" Type="int" />
+          <Property Name="IdSystem" Type="int" />
+          <Property Name="IdEquipment" Type="int" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Modulos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuloName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfil_Edificios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPerfil" Type="int" Nullable="false" />
+          <Property Name="IDEdificio" Type="int" Nullable="false" />
+          <Property Name="EdificioName" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfil_Modulos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPerfil" Type="int" Nullable="false" />
+          <Property Name="IDModulo" Type="int" Nullable="false" />
+          <Property Name="ModuloName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Nivel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfil_Sistemas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPerfil" Type="int" Nullable="false" />
+          <Property Name="IDSistema" Type="int" Nullable="false" />
+          <Property Name="SistemaName" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PerfilesUsuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PerfilName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IDPerfilUsuario" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SessionLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Logg" Type="varchar(max)" />
+          <Property Name="IdApp" Type="int" />
+          <Property Name="App" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Sistemas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SistemaName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdBuilding" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="SecondLastName" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdRol" Type="int" />
+          <Property Name="IdIdioma" Type="int" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Correo" Type="varchar" MaxLength="255" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+          <Property Name="Compania" Type="varchar" MaxLength="250" />
+          <Property Name="Departamento" Type="varchar" MaxLength="250" />
+          <Property Name="Manager" Type="varchar" MaxLength="250" />
+          <Property Name="Tag1" Type="varchar(max)" />
+          <Property Name="Tag2" Type="varchar(max)" />
+          <Property Name="IDPerfilUsuario" Type="int" />
+          <Property Name="IDArea" Type="int" />
+          <Property Name="Token" Type="text" />
+          <Property Name="TimeOut" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.GetAllLogger' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetAllLogger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TextoLog" Type="varchar(max)" />
+          <Property Name="TagUsuario" Type="varchar(max)" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="App" Type="varchar(max)" />
+          <Property Name="IdApp" Type="int" />
+          <Property Name="IdBuilding" Type="int" />
+          <Property Name="IdSystem" Type="int" />
+          <Property Name="IdEquipment" Type="int" />
+          <Property Name="xFecha" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.GetAllPerfil_Edificios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetAllPerfil_Edificios">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDPerfil" />
+            <PropertyRef Name="IDEdificio" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPerfil" Type="int" Nullable="false" />
+          <Property Name="IDEdificio" Type="int" Nullable="false" />
+          <Property Name="EdificioName" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.GetAllPerfil_Modulos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetAllPerfil_Modulos">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDPerfil" />
+            <PropertyRef Name="IDModulo" />
+            <PropertyRef Name="Nivel" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPerfil" Type="int" Nullable="false" />
+          <Property Name="IDModulo" Type="int" Nullable="false" />
+          <Property Name="Nivel" Type="int" Nullable="false" />
+          <Property Name="ModuloName" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.GetAllPerfil_Sistemas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetAllPerfil_Sistemas">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDPerfil" />
+            <PropertyRef Name="IDSistema" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPerfil" Type="int" Nullable="false" />
+          <Property Name="IDSistema" Type="int" Nullable="false" />
+          <Property Name="SistemaName" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.GetUserDataTag' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetUserDataTag">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="SecondLastName" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IDPerfilUsuario" Type="int" />
+          <Property Name="IdRol" Type="int" />
+          <Property Name="Perfil" Type="varchar(max)" />
+          <Property Name="NombrePerfil" Type="varchar(max)" />
+          <Property Name="IDArea" Type="int" />
+          <Property Name="Area" Type="varchar" MaxLength="800" />
+          <Property Name="IdIdioma" Type="int" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Correo" Type="varchar" MaxLength="255" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+          <Property Name="Compania" Type="varchar" MaxLength="250" />
+          <Property Name="IDDepartamento" Type="varchar" MaxLength="250" />
+          <Property Name="Departamento" Type="varchar" MaxLength="250" />
+          <Property Name="Manager" Type="varchar" MaxLength="250" />
+          <Property Name="Tag1" Type="varchar(max)" />
+          <Property Name="Tag2" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.GetUsersTags' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetUsersTags">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tag1" Type="varchar(max)" />
+          <Property Name="Tag2" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.viewLoggers' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="viewLoggers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="TextoLog" Type="varchar(max)" />
+          <Property Name="TagUsuario" Type="varchar(max)" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="App" Type="varchar(max)" />
+          <Property Name="IdApp" Type="int" />
+          <Property Name="IdBuilding" Type="int" />
+          <Property Name="IdSystem" Type="int" />
+          <Property Name="IdEquipment" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="SecondLastName" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="Compania" Type="varchar" MaxLength="250" />
+          <Property Name="Rol" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Departamento" Type="varchar" MaxLength="250" />
+          <Property Name="Area" Type="varchar" MaxLength="800" />
+          <Property Name="Perfil" Type="varchar(max)" />
+          <Property Name="Sistema" Type="varchar(max)" />
+          <Property Name="Edificio" Type="varchar(max)" />
+          <Property Name="Modulo" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.viewRoles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="viewRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RolName" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IDPerfilUsuario" Type="varchar" MaxLength="255" />
+          <Property Name="Status" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="NombrePerfil" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.viewSesionLog' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="viewSesionLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="varchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Logg" Type="varchar(max)" />
+          <Property Name="IdApp" Type="int" />
+          <Property Name="App" Type="varchar(max)" />
+          <Property Name="Nombre" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="SecondLastName" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="Compania" Type="varchar" MaxLength="250" />
+          <Property Name="Departamento" Type="varchar" MaxLength="250" />
+          <Property Name="Area" Type="varchar" MaxLength="800" />
+          <Property Name="Perfil" Type="varchar(max)" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Manager" Type="varchar" MaxLength="250" />
+          <Property Name="Modulo" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GLOBAL_BMW.dbo.viewSystems' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="viewSystems">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="SistemaName" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SistemaName" Type="varchar(max)" Nullable="false" />
+          <Property Name="IdBuilding" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Building" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="GLOBAL_BMWModel1StoreContainer">
+          <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companias" EntityType="Self.Companias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Config_correos" EntityType="Self.Config_correos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuracion" EntityType="Self.Configuracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Edificios" EntityType="Self.Edificios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logger" EntityType="Self.Logger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil_Edificios" EntityType="Self.Perfil_Edificios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil_Modulos" EntityType="Self.Perfil_Modulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil_Sistemas" EntityType="Self.Perfil_Sistemas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerfilesUsuarios" EntityType="Self.PerfilesUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SessionLog" EntityType="Self.SessionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sistemas" EntityType="Self.Sistemas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GetAllLogger" EntityType="Self.GetAllLogger" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetAllLogger].[id] AS [id], 
+    [GetAllLogger].[TextoLog] AS [TextoLog], 
+    [GetAllLogger].[TagUsuario] AS [TagUsuario], 
+    [GetAllLogger].[Fecha] AS [Fecha], 
+    [GetAllLogger].[App] AS [App], 
+    [GetAllLogger].[IdApp] AS [IdApp], 
+    [GetAllLogger].[IdBuilding] AS [IdBuilding], 
+    [GetAllLogger].[IdSystem] AS [IdSystem], 
+    [GetAllLogger].[IdEquipment] AS [IdEquipment], 
+    [GetAllLogger].[xFecha] AS [xFecha]
+    FROM [dbo].[GetAllLogger] AS [GetAllLogger]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetAllPerfil_Edificios" EntityType="Self.GetAllPerfil_Edificios" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetAllPerfil_Edificios].[ID] AS [ID], 
+    [GetAllPerfil_Edificios].[IDPerfil] AS [IDPerfil], 
+    [GetAllPerfil_Edificios].[IDEdificio] AS [IDEdificio], 
+    [GetAllPerfil_Edificios].[EdificioName] AS [EdificioName]
+    FROM [dbo].[GetAllPerfil_Edificios] AS [GetAllPerfil_Edificios]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetAllPerfil_Modulos" EntityType="Self.GetAllPerfil_Modulos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetAllPerfil_Modulos].[ID] AS [ID], 
+    [GetAllPerfil_Modulos].[IDPerfil] AS [IDPerfil], 
+    [GetAllPerfil_Modulos].[IDModulo] AS [IDModulo], 
+    [GetAllPerfil_Modulos].[Nivel] AS [Nivel], 
+    [GetAllPerfil_Modulos].[ModuloName] AS [ModuloName]
+    FROM [dbo].[GetAllPerfil_Modulos] AS [GetAllPerfil_Modulos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetAllPerfil_Sistemas" EntityType="Self.GetAllPerfil_Sistemas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetAllPerfil_Sistemas].[ID] AS [ID], 
+    [GetAllPerfil_Sistemas].[IDPerfil] AS [IDPerfil], 
+    [GetAllPerfil_Sistemas].[IDSistema] AS [IDSistema], 
+    [GetAllPerfil_Sistemas].[SistemaName] AS [SistemaName]
+    FROM [dbo].[GetAllPerfil_Sistemas] AS [GetAllPerfil_Sistemas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetUserDataTag" EntityType="Self.GetUserDataTag" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetUserDataTag].[ID] AS [ID], 
+    [GetUserDataTag].[Nombre] AS [Nombre], 
+    [GetUserDataTag].[LastName] AS [LastName], 
+    [GetUserDataTag].[SecondLastName] AS [SecondLastName], 
+    [GetUserDataTag].[UserName] AS [UserName], 
+    [GetUserDataTag].[Password] AS [Password], 
+    [GetUserDataTag].[IDPerfilUsuario] AS [IDPerfilUsuario], 
+    [GetUserDataTag].[IdRol] AS [IdRol], 
+    [GetUserDataTag].[Perfil] AS [Perfil], 
+    [GetUserDataTag].[NombrePerfil] AS [NombrePerfil], 
+    [GetUserDataTag].[IDArea] AS [IDArea], 
+    [GetUserDataTag].[Area] AS [Area], 
+    [GetUserDataTag].[IdIdioma] AS [IdIdioma], 
+    [GetUserDataTag].[Telefono] AS [Telefono], 
+    [GetUserDataTag].[Correo] AS [Correo], 
+    [GetUserDataTag].[Status] AS [Status], 
+    [GetUserDataTag].[Compania] AS [Compania], 
+    [GetUserDataTag].[IDDepartamento] AS [IDDepartamento], 
+    [GetUserDataTag].[Departamento] AS [Departamento], 
+    [GetUserDataTag].[Manager] AS [Manager], 
+    [GetUserDataTag].[Tag1] AS [Tag1], 
+    [GetUserDataTag].[Tag2] AS [Tag2]
+    FROM [dbo].[GetUserDataTag] AS [GetUserDataTag]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetUsersTags" EntityType="Self.GetUsersTags" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetUsersTags].[ID] AS [ID], 
+    [GetUsersTags].[Tag1] AS [Tag1], 
+    [GetUsersTags].[Tag2] AS [Tag2]
+    FROM [dbo].[GetUsersTags] AS [GetUsersTags]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewLoggers" EntityType="Self.viewLoggers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewLoggers].[id] AS [id], 
+    [viewLoggers].[TextoLog] AS [TextoLog], 
+    [viewLoggers].[TagUsuario] AS [TagUsuario], 
+    [viewLoggers].[Fecha] AS [Fecha], 
+    [viewLoggers].[App] AS [App], 
+    [viewLoggers].[IdApp] AS [IdApp], 
+    [viewLoggers].[IdBuilding] AS [IdBuilding], 
+    [viewLoggers].[IdSystem] AS [IdSystem], 
+    [viewLoggers].[IdEquipment] AS [IdEquipment], 
+    [viewLoggers].[Nombre] AS [Nombre], 
+    [viewLoggers].[LastName] AS [LastName], 
+    [viewLoggers].[SecondLastName] AS [SecondLastName], 
+    [viewLoggers].[UserName] AS [UserName], 
+    [viewLoggers].[Compania] AS [Compania], 
+    [viewLoggers].[Rol] AS [Rol], 
+    [viewLoggers].[Telefono] AS [Telefono], 
+    [viewLoggers].[Departamento] AS [Departamento], 
+    [viewLoggers].[Area] AS [Area], 
+    [viewLoggers].[Perfil] AS [Perfil], 
+    [viewLoggers].[Sistema] AS [Sistema], 
+    [viewLoggers].[Edificio] AS [Edificio], 
+    [viewLoggers].[Modulo] AS [Modulo]
+    FROM [dbo].[viewLoggers] AS [viewLoggers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewRoles" EntityType="Self.viewRoles" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewRoles].[ID] AS [ID], 
+    [viewRoles].[RolName] AS [RolName], 
+    [viewRoles].[IDPerfilUsuario] AS [IDPerfilUsuario], 
+    [viewRoles].[Status] AS [Status], 
+    [viewRoles].[NombrePerfil] AS [NombrePerfil]
+    FROM [dbo].[viewRoles] AS [viewRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewSesionLog" EntityType="Self.viewSesionLog" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewSesionLog].[id] AS [id], 
+    [viewSesionLog].[Usuario] AS [Usuario], 
+    [viewSesionLog].[Date] AS [Date], 
+    [viewSesionLog].[Logg] AS [Logg], 
+    [viewSesionLog].[IdApp] AS [IdApp], 
+    [viewSesionLog].[App] AS [App], 
+    [viewSesionLog].[Nombre] AS [Nombre], 
+    [viewSesionLog].[LastName] AS [LastName], 
+    [viewSesionLog].[SecondLastName] AS [SecondLastName], 
+    [viewSesionLog].[UserName] AS [UserName], 
+    [viewSesionLog].[Compania] AS [Compania], 
+    [viewSesionLog].[Departamento] AS [Departamento], 
+    [viewSesionLog].[Area] AS [Area], 
+    [viewSesionLog].[Perfil] AS [Perfil], 
+    [viewSesionLog].[Telefono] AS [Telefono], 
+    [viewSesionLog].[Manager] AS [Manager], 
+    [viewSesionLog].[Modulo] AS [Modulo]
+    FROM [dbo].[viewSesionLog] AS [viewSesionLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewSystems" EntityType="Self.viewSystems" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewSystems].[ID] AS [ID], 
+    [viewSystems].[SistemaName] AS [SistemaName], 
+    [viewSystems].[IdBuilding] AS [IdBuilding], 
+    [viewSystems].[Status] AS [Status], 
+    [viewSystems].[Building] AS [Building]
+    FROM [dbo].[viewSystems] AS [viewSystems]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GLOBAL_BMWModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GLOBAL_BMW1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Areas" EntityType="GLOBAL_BMWModel1.Area" />
+          <EntitySet Name="Companias" EntityType="GLOBAL_BMWModel1.Compania" />
+          <EntitySet Name="Config_correos" EntityType="GLOBAL_BMWModel1.Config_correos" />
+          <EntitySet Name="Configuracions" EntityType="GLOBAL_BMWModel1.Configuracion" />
+          <EntitySet Name="Departamentos" EntityType="GLOBAL_BMWModel1.Departamento" />
+          <EntitySet Name="Edificios" EntityType="GLOBAL_BMWModel1.Edificio" />
+          <EntitySet Name="Loggers" EntityType="GLOBAL_BMWModel1.Logger" />
+          <EntitySet Name="Logs" EntityType="GLOBAL_BMWModel1.Log" />
+          <EntitySet Name="Modulos" EntityType="GLOBAL_BMWModel1.Modulo" />
+          <EntitySet Name="Perfil_Edificios" EntityType="GLOBAL_BMWModel1.Perfil_Edificios" />
+          <EntitySet Name="Perfil_Modulos" EntityType="GLOBAL_BMWModel1.Perfil_Modulos" />
+          <EntitySet Name="Perfil_Sistemas" EntityType="GLOBAL_BMWModel1.Perfil_Sistemas" />
+          <EntitySet Name="PerfilesUsuarios" EntityType="GLOBAL_BMWModel1.PerfilesUsuario" />
+          <EntitySet Name="Roles" EntityType="GLOBAL_BMWModel1.Role" />
+          <EntitySet Name="SessionLogs" EntityType="GLOBAL_BMWModel1.SessionLog" />
+          <EntitySet Name="Sistemas" EntityType="GLOBAL_BMWModel1.Sistema" />
+          <EntitySet Name="Usuarios" EntityType="GLOBAL_BMWModel1.Usuario" />
+          <EntitySet Name="GetAllLoggers" EntityType="GLOBAL_BMWModel1.GetAllLogger" />
+          <EntitySet Name="GetAllPerfil_Edificios" EntityType="GLOBAL_BMWModel1.GetAllPerfil_Edificios" />
+          <EntitySet Name="GetAllPerfil_Modulos" EntityType="GLOBAL_BMWModel1.GetAllPerfil_Modulos" />
+          <EntitySet Name="GetAllPerfil_Sistemas" EntityType="GLOBAL_BMWModel1.GetAllPerfil_Sistemas" />
+          <EntitySet Name="GetUserDataTags" EntityType="GLOBAL_BMWModel1.GetUserDataTag" />
+          <EntitySet Name="GetUsersTags" EntityType="GLOBAL_BMWModel1.GetUsersTag" />
+          <EntitySet Name="viewLoggers" EntityType="GLOBAL_BMWModel1.viewLogger" />
+          <EntitySet Name="viewRoles" EntityType="GLOBAL_BMWModel1.viewRole" />
+          <EntitySet Name="viewSesionLogs" EntityType="GLOBAL_BMWModel1.viewSesionLog" />
+          <EntitySet Name="viewSystems" EntityType="GLOBAL_BMWModel1.viewSystem" />
+        </EntityContainer>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaName" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Compania">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompaniaName" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Config_correos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PORT" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SERVER" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IPSERVIDOR" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IPCONTROLGAS1" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IPCONTROLGAS2" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IPPLC" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REPORTESPOR" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartamentName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Edificio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EdificioName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Logger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TextoLog" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TagUsuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="App" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdApp" Type="Int32" />
+          <Property Name="IdBuilding" Type="Int32" />
+          <Property Name="IdSystem" Type="Int32" />
+          <Property Name="IdEquipment" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuloName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Perfil_Edificios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPerfil" Type="Int32" Nullable="false" />
+          <Property Name="IDEdificio" Type="Int32" Nullable="false" />
+          <Property Name="EdificioName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Perfil_Modulos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPerfil" Type="Int32" Nullable="false" />
+          <Property Name="IDModulo" Type="Int32" Nullable="false" />
+          <Property Name="ModuloName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfil_Sistemas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPerfil" Type="Int32" Nullable="false" />
+          <Property Name="IDSistema" Type="Int32" Nullable="false" />
+          <Property Name="SistemaName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PerfilesUsuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PerfilName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IDPerfilUsuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SessionLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Logg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdApp" Type="Int32" />
+          <Property Name="App" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sistema">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SistemaName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdBuilding" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SecondLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdRol" Type="Int32" />
+          <Property Name="IdIdioma" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Compania" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Manager" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Tag1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tag2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDPerfilUsuario" Type="Int32" />
+          <Property Name="IDArea" Type="Int32" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeOut" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GetAllLogger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TextoLog" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TagUsuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="App" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdApp" Type="Int32" />
+          <Property Name="IdBuilding" Type="Int32" />
+          <Property Name="IdSystem" Type="Int32" />
+          <Property Name="IdEquipment" Type="Int32" />
+          <Property Name="xFecha" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GetAllPerfil_Edificios">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDPerfil" />
+            <PropertyRef Name="IDEdificio" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPerfil" Type="Int32" Nullable="false" />
+          <Property Name="IDEdificio" Type="Int32" Nullable="false" />
+          <Property Name="EdificioName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GetAllPerfil_Modulos">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDPerfil" />
+            <PropertyRef Name="IDModulo" />
+            <PropertyRef Name="Nivel" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPerfil" Type="Int32" Nullable="false" />
+          <Property Name="IDModulo" Type="Int32" Nullable="false" />
+          <Property Name="Nivel" Type="Int32" Nullable="false" />
+          <Property Name="ModuloName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GetAllPerfil_Sistemas">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDPerfil" />
+            <PropertyRef Name="IDSistema" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPerfil" Type="Int32" Nullable="false" />
+          <Property Name="IDSistema" Type="Int32" Nullable="false" />
+          <Property Name="SistemaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GetUserDataTag">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SecondLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IDPerfilUsuario" Type="Int32" />
+          <Property Name="IdRol" Type="Int32" />
+          <Property Name="Perfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombrePerfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDArea" Type="Int32" />
+          <Property Name="Area" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="IdIdioma" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Compania" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IDDepartamento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Manager" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Tag1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tag2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GetUsersTag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tag1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tag2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="viewLogger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="TextoLog" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TagUsuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="App" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdApp" Type="Int32" />
+          <Property Name="IdBuilding" Type="Int32" />
+          <Property Name="IdSystem" Type="Int32" />
+          <Property Name="IdEquipment" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SecondLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Compania" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Rol" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="Perfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sistema" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Edificio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Modulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="viewRole">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RolName" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IDPerfilUsuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NombrePerfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="viewSesionLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Logg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdApp" Type="Int32" />
+          <Property Name="App" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SecondLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Compania" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="Perfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Manager" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Modulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="viewSystem">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="SistemaName" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SistemaName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdBuilding" Type="Int32" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Building" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GLOBAL_BMWModel1StoreContainer" CdmEntityContainer="GLOBAL_BMW1">
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Area">
+              <MappingFragment StoreEntitySet="Areas">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companias">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Compania">
+              <MappingFragment StoreEntitySet="Companias">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompaniaName" ColumnName="CompaniaName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Config_correos">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Config_correos">
+              <MappingFragment StoreEntitySet="Config_correos">
+                <ScalarProperty Name="SERVER" ColumnName="SERVER" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PORT" ColumnName="PORT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configuracions">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Configuracion">
+              <MappingFragment StoreEntitySet="Configuracion">
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="REPORTESPOR" ColumnName="REPORTESPOR" />
+                <ScalarProperty Name="IPPLC" ColumnName="IPPLC" />
+                <ScalarProperty Name="IPCONTROLGAS2" ColumnName="IPCONTROLGAS2" />
+                <ScalarProperty Name="IPCONTROLGAS1" ColumnName="IPCONTROLGAS1" />
+                <ScalarProperty Name="IPSERVIDOR" ColumnName="IPSERVIDOR" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Departamento">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DepartamentName" ColumnName="DepartamentName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Edificios">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Edificio">
+              <MappingFragment StoreEntitySet="Edificios">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EdificioName" ColumnName="EdificioName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loggers">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Logger">
+              <MappingFragment StoreEntitySet="Logger">
+                <ScalarProperty Name="IdEquipment" ColumnName="IdEquipment" />
+                <ScalarProperty Name="IdSystem" ColumnName="IdSystem" />
+                <ScalarProperty Name="IdBuilding" ColumnName="IdBuilding" />
+                <ScalarProperty Name="IdApp" ColumnName="IdApp" />
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TagUsuario" ColumnName="TagUsuario" />
+                <ScalarProperty Name="TextoLog" ColumnName="TextoLog" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Log">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modulos">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Modulo">
+              <MappingFragment StoreEntitySet="Modulos">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ModuloName" ColumnName="ModuloName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil_Edificios">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Perfil_Edificios">
+              <MappingFragment StoreEntitySet="Perfil_Edificios">
+                <ScalarProperty Name="EdificioName" ColumnName="EdificioName" />
+                <ScalarProperty Name="IDEdificio" ColumnName="IDEdificio" />
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil_Modulos">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Perfil_Modulos">
+              <MappingFragment StoreEntitySet="Perfil_Modulos">
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="ModuloName" ColumnName="ModuloName" />
+                <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil_Sistemas">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Perfil_Sistemas">
+              <MappingFragment StoreEntitySet="Perfil_Sistemas">
+                <ScalarProperty Name="SistemaName" ColumnName="SistemaName" />
+                <ScalarProperty Name="IDSistema" ColumnName="IDSistema" />
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerfilesUsuarios">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.PerfilesUsuario">
+              <MappingFragment StoreEntitySet="PerfilesUsuarios">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PerfilName" ColumnName="PerfilName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IDPerfilUsuario" ColumnName="IDPerfilUsuario" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RolName" ColumnName="RolName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionLogs">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.SessionLog">
+              <MappingFragment StoreEntitySet="SessionLog">
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="IdApp" ColumnName="IdApp" />
+                <ScalarProperty Name="Logg" ColumnName="Logg" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sistemas">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Sistema">
+              <MappingFragment StoreEntitySet="Sistemas">
+                <ScalarProperty Name="IdBuilding" ColumnName="IdBuilding" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SistemaName" ColumnName="SistemaName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+                <ScalarProperty Name="IDPerfilUsuario" ColumnName="IDPerfilUsuario" />
+                <ScalarProperty Name="Tag2" ColumnName="Tag2" />
+                <ScalarProperty Name="Tag1" ColumnName="Tag1" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Compania" ColumnName="Compania" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetAllLoggers">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.GetAllLogger">
+              <MappingFragment StoreEntitySet="GetAllLogger">
+                <ScalarProperty Name="xFecha" ColumnName="xFecha" />
+                <ScalarProperty Name="IdEquipment" ColumnName="IdEquipment" />
+                <ScalarProperty Name="IdSystem" ColumnName="IdSystem" />
+                <ScalarProperty Name="IdBuilding" ColumnName="IdBuilding" />
+                <ScalarProperty Name="IdApp" ColumnName="IdApp" />
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TagUsuario" ColumnName="TagUsuario" />
+                <ScalarProperty Name="TextoLog" ColumnName="TextoLog" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetAllPerfil_Edificios">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.GetAllPerfil_Edificios">
+              <MappingFragment StoreEntitySet="GetAllPerfil_Edificios">
+                <ScalarProperty Name="EdificioName" ColumnName="EdificioName" />
+                <ScalarProperty Name="IDEdificio" ColumnName="IDEdificio" />
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetAllPerfil_Modulos">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.GetAllPerfil_Modulos">
+              <MappingFragment StoreEntitySet="GetAllPerfil_Modulos">
+                <ScalarProperty Name="ModuloName" ColumnName="ModuloName" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetAllPerfil_Sistemas">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.GetAllPerfil_Sistemas">
+              <MappingFragment StoreEntitySet="GetAllPerfil_Sistemas">
+                <ScalarProperty Name="SistemaName" ColumnName="SistemaName" />
+                <ScalarProperty Name="IDSistema" ColumnName="IDSistema" />
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetUserDataTags">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.GetUserDataTag">
+              <MappingFragment StoreEntitySet="GetUserDataTag">
+                <ScalarProperty Name="Tag2" ColumnName="Tag2" />
+                <ScalarProperty Name="Tag1" ColumnName="Tag1" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
+                <ScalarProperty Name="Compania" ColumnName="Compania" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+                <ScalarProperty Name="NombrePerfil" ColumnName="NombrePerfil" />
+                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="IDPerfilUsuario" ColumnName="IDPerfilUsuario" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetUsersTags">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.GetUsersTag">
+              <MappingFragment StoreEntitySet="GetUsersTags">
+                <ScalarProperty Name="Tag2" ColumnName="Tag2" />
+                <ScalarProperty Name="Tag1" ColumnName="Tag1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewLoggers">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.viewLogger">
+              <MappingFragment StoreEntitySet="viewLoggers">
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="Edificio" ColumnName="Edificio" />
+                <ScalarProperty Name="Sistema" ColumnName="Sistema" />
+                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Compania" ColumnName="Compania" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdEquipment" ColumnName="IdEquipment" />
+                <ScalarProperty Name="IdSystem" ColumnName="IdSystem" />
+                <ScalarProperty Name="IdBuilding" ColumnName="IdBuilding" />
+                <ScalarProperty Name="IdApp" ColumnName="IdApp" />
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TagUsuario" ColumnName="TagUsuario" />
+                <ScalarProperty Name="TextoLog" ColumnName="TextoLog" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewRoles">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.viewRole">
+              <MappingFragment StoreEntitySet="viewRoles">
+                <ScalarProperty Name="NombrePerfil" ColumnName="NombrePerfil" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IDPerfilUsuario" ColumnName="IDPerfilUsuario" />
+                <ScalarProperty Name="RolName" ColumnName="RolName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewSesionLogs">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.viewSesionLog">
+              <MappingFragment StoreEntitySet="viewSesionLog">
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Compania" ColumnName="Compania" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="IdApp" ColumnName="IdApp" />
+                <ScalarProperty Name="Logg" ColumnName="Logg" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewSystems">
+            <EntityTypeMapping TypeName="GLOBAL_BMWModel1.viewSystem">
+              <MappingFragment StoreEntitySet="viewSystems">
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdBuilding" ColumnName="IdBuilding" />
+                <ScalarProperty Name="SistemaName" ColumnName="SistemaName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
